@@ -1,3 +1,11 @@
+/*
+Writing Markup Rules of JSX: 
+i> one root element could only be returned
+ii> all tags must be closed
+ii> use Camel case most of the time
+
+*/
+
 import "./App.css"
 import {Author} from "./Author.jsx";
 
