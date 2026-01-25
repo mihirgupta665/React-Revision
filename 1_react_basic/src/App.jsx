@@ -9,6 +9,7 @@ iii> use Camel case most of the time
 
 import "./App.css"
 import {Author} from "./Author.jsx";
+import ProductTab from "./ProductTab.jsx";
 
 function Title() {
     return <h1>Hello World! this side Mihir</h1>
@@ -28,7 +29,9 @@ function App() {  // App function is itself the app component
             <Description />
             <Author/>
             <h3>So lets Go!!</h3>
-            { name.toUpperCase() }     
+            { name.toUpperCase() }    
+            <ProductTab></ProductTab> 
+            <ProductTab></ProductTab> 
         </>
     );   // whatever is returned becomes the visible UI of the page
 
