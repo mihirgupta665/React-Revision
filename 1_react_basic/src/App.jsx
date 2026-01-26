@@ -48,3 +48,8 @@ export default App
 // export { name... };
 // import { name } from "./file_name.jsx";
 
+// Porps are the information that you pass to a JSX tag which alters the output UI component rendering.
+// props in argument is a object with title-value pair as the key-value pair. If printed a in console in strict mode everything is printed twice (2 times).
+// {name_attributes...} Destructuring of Props could also be done in the parameter to directly use the prop container.
+
+
