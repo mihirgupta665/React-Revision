@@ -1,4 +1,6 @@
 import Prototype from "./Prototype.jsx"
+// conditionals : adding elements based on some condition
+
 function PrototypeTab() {
     let list1 = [<li>"Hi-tech"</li>, <li>"Durable"</li>, <li>"Expensive"</li>];
     // or could use map function to change a normal array to html containing element array
