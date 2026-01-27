@@ -8,9 +8,16 @@ import { useState } from "react";
 
 // to change a value of same state more than once use call back if the state is dependent on the previous state, currCount stores the value of the state valriable in call back
 
+let init = () => {
+    console.log("Initialising");
+    return 0;
+}
+
 export default function LikeButton() {
     let [isLiked, setIsLiked] = useState(false);
-    let [clicks, setClicks] = useState(0);
+    
+    // reference of the initial function (not execution) should be passed, otherwise initialization function will be executed each time the state changes and UI re-renders.
+    let [clicks, setClicks] = useState(init);   
     let styles = { color: "red" };
     let toggleLike = () => {
         setIsLiked(!isLiked);
