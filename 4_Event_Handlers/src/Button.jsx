@@ -24,7 +24,9 @@ export default function Button(){
             <br />
             <p onMouseOver={handleMouseOver}>Hi! there i am a para!!</p> 
             <br />
-            <button onD oubleClick={handleDblClick}>Double Click Me!</button>
+            <button onDoubleClick={handleDblClick}>Double Click Me!</button>
+            <br />
+            
         </div>
     );
 }
