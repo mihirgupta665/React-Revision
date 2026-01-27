@@ -4,6 +4,7 @@ import { useState } from "react";
 // multiples state hooks could be created in side one component
 
 // Closure : A closure is a feature in JS where an inner function always has an access to the outer (enclosing) function's variables (gets preserved)
+// functions runs and execute first then the entire re-rendering of the functional components takes place.
 export default function LikeButton() {
     let [isLiked, setIsLiked] = useState(false);
     let [clicks, setClicks] = useState(0);
@@ -11,6 +12,7 @@ export default function LikeButton() {
     let toggleLike = () => {
         setIsLiked(!isLiked);
         setClicks(clicks+1);
+        console.log(clicks);    // number is not updated because the updation take place one re-rendering takes place
     }
     return (
         <div>
@@ -18,6 +20,7 @@ export default function LikeButton() {
             <p onClick={toggleLike}>
                 {/* {isLiked.toString()} */}
                 {isLiked ? <i className="fa-solid fa-heart" style={styles} ></i> : <i className="fa-regular fa-heart"></i>}
+                
             </p>
         </div>
     );
