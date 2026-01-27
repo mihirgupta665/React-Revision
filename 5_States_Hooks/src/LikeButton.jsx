@@ -5,13 +5,22 @@ import { useState } from "react";
 
 // Closure : A closure is a feature in JS where an inner function always has an access to the outer (enclosing) function's variables (gets preserved)
 // functions runs and execute first then the entire re-rendering of the functional components takes place.
+
+// to change a value of same state more than once use call back if the state is dependent on the previous state, currCount stores the value of the state valriable in call back
+
 export default function LikeButton() {
     let [isLiked, setIsLiked] = useState(false);
     let [clicks, setClicks] = useState(0);
     let styles = { color: "red" };
     let toggleLike = () => {
         setIsLiked(!isLiked);
-        setClicks(clicks+1);
+        // currCount is the value of the curr state variable
+        setClicks((currCount) => {
+            return currCount+1;
+        });
+        setClicks((currCount) => {
+            return currCount+1;
+        });
         console.log(clicks);    // number is not updated because the updation take place one re-rendering takes place
     }
     return (
