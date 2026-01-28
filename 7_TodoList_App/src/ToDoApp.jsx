@@ -17,9 +17,23 @@ export default function ToDoApp(){
         setNewTodo(event.target.value);
     }
 
+    let deleteTodo = (id) => {
+        // console.log(`Task with id "${id}" is going to be deleted`);
+        setTodos((prevTodos) => prevTodos.filter((todo) => todo.id != id ));
+        
+    }
+
+    let upperCaseAll = () => {
+        setTodos((prevTodos) => prevTodos.map((todo) =>  {
+            return { ...todo, task: todo.task.toUpperCase() };
+        }));
+    }
+
+
     return (
         <>
             <input type="text" placeholder="Enter the Task" value={newTodo} onChange={updateTodoValue} />
+            <br />
             <br />
             <button onClick={addNewTodo}>Add Task</button>
             <br />
@@ -31,10 +45,17 @@ export default function ToDoApp(){
                 {
                     // list should have a unique key for its uniquely identification which helps in deleting and editing.
                     todos.map((todo) => (
-                        <li key={todo.id}>{todo.task}</li>
+                        <li key={todo.id}>
+                            <span>{todo.task}</span>
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+{/* to pass a argument in reference we need to write the function in a call back function thereby defining a new function and not executing it. */}
+                            <button onClick={ () => deleteTodo(todo.id) }>Delete</button>
+                        </li>
                     ))
                 }
             </ul>
+            <br />
+            <button onClick={upperCaseAll}>UpperCaseAll</button>
         </>
     );
 }
