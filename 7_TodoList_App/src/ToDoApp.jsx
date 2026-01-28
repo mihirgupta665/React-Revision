@@ -24,8 +24,26 @@ export default function ToDoApp(){
     }
 
     let upperCaseAll = () => {
+        //  always check that we are updating on previous values or not 
         setTodos((prevTodos) => prevTodos.map((todo) =>  {
             return { ...todo, task: todo.task.toUpperCase() };
+        }));
+    }
+
+
+
+
+
+
+    let upperCaseOne = (id) => {
+        // console.log(id);
+        setTodos( (prevTodos) => prevTodos.map((todo) => {
+            if(todo.id === id){
+                return { ...todo, task: todo.task.toUpperCase() }
+            }
+            else{
+                return { ...todo }
+            }
         }));
     }
 
@@ -50,12 +68,14 @@ export default function ToDoApp(){
                             &nbsp;&nbsp;&nbsp;&nbsp;
 {/* to pass a argument in reference we need to write the function in a call back function thereby defining a new function and not executing it. */}
                             <button onClick={ () => deleteTodo(todo.id) }>Delete</button>
+                            <button onClick= {() => upperCaseOne(todo.id)}>UpperCase</button>
                         </li>
                     ))
                 }
             </ul>
             <br />
             <button onClick={upperCaseAll}>UpperCaseAll</button>
+
         </>
     );
 }
