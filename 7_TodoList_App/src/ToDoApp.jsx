@@ -2,12 +2,12 @@ import { useState } from "react";
 import {v4 as uuidv4} from 'uuid';
 
 export default function ToDoApp(){
-    let [todos, setTodos] = useState([{task: "Simple Task", id: uuidv4() }]);
+    let [todos, setTodos] = useState([{task: "Simple Task", id: uuidv4(), isDone: false }]);
     let [newTodo, setNewTodo] = useState("");
 
     let addNewTodo = () => {
         setTodos(() => {
-            return [...todos, { task: newTodo, id: uuidv4() }];
+            return [...todos, { task: newTodo, id: uuidv4(), isDone: false }];
         });
         setNewTodo("");
     }
@@ -30,22 +30,25 @@ export default function ToDoApp(){
         }));
     }
 
-
-
-
-
-
-    let upperCaseOne = (id) => {
+    let markAsDone = (id) => {
         // console.log(id);
         setTodos( (prevTodos) => prevTodos.map((todo) => {
             if(todo.id === id){
-                return { ...todo, task: todo.task.toUpperCase() }
+                return { ...todo, isDone: true }
             }
             else{
                 return { ...todo }
             }
         }));
     }
+
+
+    let markAllAsDone = () => {
+        setTodos( (prevTodos) => prevTodos.map((todo) => {
+            return {...todo, isDone: true};
+        }));
+    }
+
 
 
     return (
@@ -64,17 +67,24 @@ export default function ToDoApp(){
                     // list should have a unique key for its uniquely identification which helps in deleting and editing.
                     todos.map((todo) => (
                         <li key={todo.id}>
-                            <span>{todo.task}</span>
+                            <span style={ todo.isDone ? {textDecorationLine : "line-through"} : {} }>{todo.task}</span>
                             &nbsp;&nbsp;&nbsp;&nbsp;
 {/* to pass a argument in reference we need to write the function in a call back function thereby defining a new function and not executing it. */}
                             <button onClick={ () => deleteTodo(todo.id) }>Delete</button>
-                            <button onClick= {() => upperCaseOne(todo.id)}>UpperCase</button>
+                            <button onClick={() => markAsDone(todo.id)}>Mark As Done</button>
+                            <br />
+                            <br />
                         </li>
+                        
                     ))
                 }
             </ul>
             <br />
+            <br />
             <button onClick={upperCaseAll}>UpperCaseAll</button>
+            <br />
+            <br />
+            <button onClick={markAllAsDone}>Mark All As Done</button>
 
         </>
     );
