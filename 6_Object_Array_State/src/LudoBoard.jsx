@@ -5,7 +5,7 @@ export default function LudoBoard(){
     // changes in key value in object and index value in array does no cause change in object or array as whole or address of their. therefor react is not able to detect the change for re-rendering of the UI
     // Conclusively : to change in object or array we could use the spread operator to pass the copy thereby changing thier respective address
     let [moves, setMoves] = useState({blue: 0, red: 0, green: 0, yellow: 0});
-    let [arr, setArr] = useState(["No Moves"]);
+    let [arr, setArr] = useState(["No Moves, "]);
     let updateBlue = () => {
         // moves.blue +=1;
         console.log(moves);
@@ -16,6 +16,9 @@ export default function LudoBoard(){
             return {...prevMoves, blue: prevMoves.blue+1}
         });
         
+        setArr((prevArr) => {
+            return [...prevArr, "Blue, "]
+        })
     }
     let updateYellow = () => {
         setMoves((prevMoves) => {
@@ -32,10 +35,17 @@ export default function LudoBoard(){
         setMoves((prevMoves) => {
             return {...prevMoves, red: prevMoves.red+1};
         })
+
+        setArr((prevArr) => {
+            return [...prevArr, "Red, "];
+        })
     }
     let updateGreen = () => {
         setMoves((prevMoves) => {
             return {...prevMoves, green: prevMoves.green+1};
+        })
+        setArr((prevArr) => {
+            return [...prevArr, "Green, "];
         })
     }
 
