@@ -1,12 +1,13 @@
 import { useState } from "react";
+import {v4 as uuidv4} from 'uuid';
 
 export default function ToDoApp(){
-    let [todos, setTodos] = useState(["Sample Task"]);
+    let [todos, setTodos] = useState([{task: "Simple Task", id: uuidv4() }]);
     let [newTodo, setNewTodo] = useState("");
 
     let addNewTodo = () => {
         setTodos(() => {
-            return [...todos, newTodo];
+            return [...todos, { task: newTodo, id: uuidv4() }];
         });
         setNewTodo("");
     }
@@ -28,8 +29,9 @@ export default function ToDoApp(){
             <h1>ToDo List</h1>
             <ul>
                 {
+                    // list should have a unique key for its uniquely identification which helps in deleting and editing.
                     todos.map((todo) => (
-                        <li>{todo}</li>
+                        <li key={todo.id}>{todo.task}</li>
                     ))
                 }
             </ul>
