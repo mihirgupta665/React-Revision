@@ -2,5 +2,7 @@
     border : 2px solid pink;
     border-radius: 15px;
     width: 250px;
+    position: relative;
+    left:165px;
     margin-bottom: 20px;
 }

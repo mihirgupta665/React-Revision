@@ -7,7 +7,7 @@ import TicketNum from "./TicketNum.jsx";
 export default function App(){
     return (
         <>
-            <Ticket ticket={ [2, 4, 5] } />
+            <Lottery n={2} winningSum={10}/>
         </>
     );
 }
