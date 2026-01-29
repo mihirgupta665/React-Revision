@@ -5,13 +5,13 @@ import { genTicket, sum } from "./helper.js";
 // Lifting State Up :  when two components needs to be change together then remove state from both and assign the state to their closest parent and pass those state to them using props
 // whenever writing a component : always decide it design by three major things: i> props, ii> state, iii> events
 
-export default function Lottery(){
+export default function Lottery({n, winningSum}){
 
-    let [ticket, setTicket] = useState(genTicket(3));
-    let isWinning = sum(ticket) === 15;
+    let [ticket, setTicket] = useState(genTicket(n));
+    let isWinning = sum(ticket) === winningSum;
     // console.log(isWinning)
     let buyTicket = () => {
-        setTicket(genTicket(3));
+        setTicket(genTicket(n));
     }
 
     return(
