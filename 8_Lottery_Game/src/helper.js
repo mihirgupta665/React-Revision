@@ -7,4 +7,9 @@ function genTicket(n){
     return arr;
 }
 
-export {genTicket};
+// whenever sum or product is required use arr_name.reduce((variable, curr_element) => operation, initial_value_variable)
+function sum(arr){
+    return arr.reduce( (sum, curr) => sum+curr, 0 );
+}
+
+export {genTicket, sum};
