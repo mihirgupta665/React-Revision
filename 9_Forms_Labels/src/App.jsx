@@ -1,0 +1,13 @@
+// Standard way with form is to use controlled components. So we make the React State to be the "single source of truth"
+
+import "./App.css";
+import Form from "./Form.jsx";
+
+export default function App(){
+    return(
+        <>
+            <h1>Forms in React</h1>
+            <Form />
+        </>
+    );
+}
