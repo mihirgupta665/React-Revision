@@ -13,7 +13,9 @@ export default function Form() {
     return(
         <>
             <form>
-                <input type="text" placeholder="Enter your name..." value={fullName} onChange={handleNameChange} />
+                {/* for is an loop reserved keyword in Js therefore "htmlFor" is used to denote so */}
+                <label htmlFor="username">Name : </label>
+                <input id="username" type="text" placeholder="Enter your name..." value={fullName} onChange={handleNameChange} />
                 <button>Submit</button>
             </form>
         </>
