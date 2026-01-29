@@ -21,3 +21,6 @@ export default function Form() {
         </>
     );
 }
+
+// Functions as prop because function is a 1st class object. 
+// This means they can be passed to a function as argument, returned from it an assigned to a variable
