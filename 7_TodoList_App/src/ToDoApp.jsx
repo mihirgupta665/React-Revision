@@ -1,5 +1,6 @@
 import { useState } from "react";
 import {v4 as uuidv4} from 'uuid';
+// React 5 core concepts: i> components, ii> props, iii> states, iv> hooks, V> events
 
 export default function ToDoApp(){
     let [todos, setTodos] = useState([{task: "Simple Task", id: uuidv4(), isDone: false }]);
