@@ -10,9 +10,10 @@ export default function App(){
         <>
             <h1>Forms in React</h1>
             <Form />
+            <br />
+            <br />
             <hr />
-            <CommentForm />
-            <hr />
+            <br />
             <Comment />
         </>
     );
