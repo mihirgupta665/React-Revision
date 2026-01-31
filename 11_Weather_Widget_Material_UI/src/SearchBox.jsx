@@ -42,7 +42,7 @@ export default function SearchBox() {
 
     return(
         <div className="searchBox">
-            <h2>Search Weather</h2>
+            <h1>Search Weather</h1>
             <form onSubmit={handleSubmit}>
                 <TextField id="city" label="Enter City Name" variant="outlined" required value={city} onChange={handleChange} />
                 <br />
