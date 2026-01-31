@@ -2,6 +2,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
+import "./InfoBox.css";
 
 export default function InfoBox() {
 
@@ -18,7 +19,7 @@ export default function InfoBox() {
     }
 
     return (
-        <div>
+        <div className="InfoBox">
             <h1>Weather Info</h1>
             <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
