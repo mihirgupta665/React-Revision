@@ -12,13 +12,17 @@ export default function WeatherApp() {
         tempMax: 21.05,
         tempMin: 21.05,
         weather: "haze"
-    })
+    });
+
+    let updateInfo = (newInfo) => {
+        setWeatherInfo(newInfo);
+    }
 
     return(
         <div style={{textAlign: "center"}}>
             <h1>Weather App</h1>
             <div style={{display: "flex", justifyContent: "space-evenly" }}>
-            <SearchBox />
+            <SearchBox updateInfo={updateInfo}/>
             <InfoBox info={weatherInfo} />
             </div>
             <br />

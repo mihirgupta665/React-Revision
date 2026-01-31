@@ -4,9 +4,10 @@ import "./SearchBox.css";
 import { useState } from "react";
 
 
-export default function SearchBox() {
+export default function SearchBox({ updateInfo }) {
 
     let [city, setCity] = useState("");
+    let [error, setError] = useState(false);
     
     let handleChange = (event) => {
         setCity(event.target.value);
@@ -17,27 +18,40 @@ export default function SearchBox() {
     const API_KEY = "4fe2f28c4b2651c26045422aec92929d";
 
     let getWeatherInfo = async () => {
-        let response = await fetch(`${API_URL}?q=${city}&appid=${API_KEY}&units=metric `);    
-        let jsonResponse = await response.json();
-        // console.log(jsonResponse);
-        let result = {
-            city: city,
-            temp: jsonResponse.main.temp,
-            tempMin: jsonResponse.main.temp_min,
-            tempMax: jsonResponse.main.temp_max,
-            humidity: jsonResponse.main.humidity,
-            feelslike: jsonResponse.main.feels_like,
-            weather: jsonResponse.weather[0].description
+        try{
+            let response = await fetch(`${API_URL}?q=${city}&appid=${API_KEY}&units=metric `);
+            let jsonResponse = await response.json();
+            // console.log(jsonResponse);
+            let result = {
+                city: city,
+                temp: jsonResponse.main.temp,
+                tempMin: jsonResponse.main.temp_min,
+                tempMax: jsonResponse.main.temp_max,
+                humidity: jsonResponse.main.humidity,
+                feelslike: jsonResponse.main.feels_like,
+                weather: jsonResponse.weather[0].description
+            }
+            console.log(result);
+            return result;
         }
-        console.log(result); 
+        catch(error){
+            throw error;
+        }
+        
     }
 
     
-    let handleSubmit = (event) => {
-        event.preventDefault();
-        console.log(city);
-        getWeatherInfo();
-        setCity("");
+    let handleSubmit = async (event) => {
+        try{
+            event.preventDefault();
+            console.log(city);
+            let newInfo = await getWeatherInfo();
+            updateInfo(newInfo);
+            setCity("");
+        }
+        catch(error){
+            setError(true);
+        }
     }
 
     return(
@@ -48,6 +62,7 @@ export default function SearchBox() {
                 <br />
                 <br />
                 <Button variant="contained" type="submit">Search</Button>
+                {error && <p style={{color: "red"}}>"No such place exists in the API"</p>}
             </form>
         </div>
     );
