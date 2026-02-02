@@ -11,8 +11,18 @@ npm install react-redux
 */
 
 import { configureStore } from '@reduxjs/toolkit' 
+import todoReducer from "../features/Todo/todoSlice";
 
 export const store = configureStore({
-    reducer: {}
+    reducer: todoReducer,  //todoReducer is an object
 })
+
+/*
+Action 
+{
+    type:"event",
+    payload: "extra_information_value"
+
+}
+*/
 
