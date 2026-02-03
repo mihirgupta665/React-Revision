@@ -15,7 +15,7 @@ export const todoSlice = createSlice({
     // action has generally compulsorily 2 things type and payload
     // reducers are object which contains function as property
     reducers: {     //each function needs two parameters State and Action (State,Action) => {updates the states}
-        addToDo: (state, action) => {
+        addTodo: (state, action) => {
             const newTodo = {
                 id: nanoid(), 
                 task: action.payload,
@@ -23,7 +23,7 @@ export const todoSlice = createSlice({
             };
             state.todos.push(newTodo);  // direct mutation
         },
-        deleteToDo: (state, action) => {
+        deleteTodo: (state, action) => {
             state.todos = state.todos.filter( (todo) => todo.id!==action.payload );
         },
         markAsDone: (state, action) => {
